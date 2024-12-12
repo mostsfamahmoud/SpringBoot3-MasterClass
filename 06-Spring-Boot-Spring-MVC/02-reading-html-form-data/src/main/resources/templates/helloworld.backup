@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<HTML xmlns:th="http://www.thymeleaf.org">
+<HEAD>
+    <TITLE>
+        Thymeleaf Demo
+    </TITLE>
+
+    <!-- Include an external CSS stylesheet using Thymeleaf syntax -->
+    <link rel="stylesheet" th:href="@{/css/demo.css}"/>
+</HEAD>
+
+<BODY>
+    <!-- Display the current server time using Thymeleaf's text expression -->
+    <p th:text=" 'Time on the server is ' + ${theDate}" class="funny"/>
+</BODY>
+</HTML>

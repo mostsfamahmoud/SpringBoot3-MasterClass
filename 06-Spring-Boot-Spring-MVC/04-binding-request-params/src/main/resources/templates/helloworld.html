@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<!-- Indicates that this is an HTML5 document -->
+<HTML xmlns:th="http://www.thymeleaf.org">
+<!-- Declares the HTML element and defines the Thymeleaf namespace for `th` attributes -->
+
+<HEAD>
+    <!-- Sets the title of the webpage -->
+    <TITLE>
+        Thymeleaf Demo
+    </TITLE>
+</HEAD>
+
+<BODY>
+
+<!-- Static text displayed on the webpage -->
+Hello World Of Spring!
+
+<br><br>
+<!-- Line break tags to create vertical spacing -->
+
+<!-- Dynamically display the student's name passed as a parameter -->
+<!-- The `th:text` attribute replaces the content of this span with the value of the `studentName` parameter -->
+Student Name: <span th:text="${param.studentName}" />
+<!--
+Explanation of `${param.studentName}`:
+  - `param` refers to the request parameters passed to the view (e.g., via URL or form submission).
+  - `studentName` is the name of the parameter to fetch.
+  - The value of `studentName` will be rendered here dynamically.
+-->
+
+<br><br>
+
+<!-- Dynamically display a message passed from the controller -->
+<!-- The `th:text` attribute replaces the content of this span with the value of the `message` variable -->
+The message: <span th:text="${message}" />
+<!--
+Explanation of `${message}`:
+  - `message` is a variable passed from the controller to the Thymeleaf template.
+  - Its value is rendered dynamically in this location.
+-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<!-- Indicates this is an HTML5 document -->
+<HTML xmlns:th="http://www.thymeleaf.org">
+<!-- Declares the HTML element and defines the Thymeleaf namespace for `th` attributes -->
+
+<HEAD>
+    <meta charset="UTF-8">
+    <!-- Sets the character encoding for the document to UTF-8, ensuring support for various character sets -->
+
+    <TITLE> HelloWorld - Input Form </TITLE>
+    <!-- Sets the title of the webpage that appears in the browser tab -->
+</HEAD>
+
+<BODY>
+
+<!-- Creates a form for user input -->
+<form th:action="@{/processFormVersionThree}" method="post">
+    <!--
+    Explanation of `th:action`:
+    - `@{/processFormVersionThree}` resolves to the URL `/processFormVersionThree`.
+    - When the form is submitted, it sends the data to this endpoint.
+
+    Explanation of `method="post"`:
+    - Specifies the HTTP POST method for the form submission, ensuring data is sent in the request body.
+    -->
+
+    <!-- Input field for the user to enter their name -->
+    <input type="text" name="studentName" placeholder="What's your name ?"/>
+    <!--
+    Attributes explained:
+    - `type="text"`: Creates a single-line text input field.
+    - `name="studentName"`: The parameter name used to retrieve the entered data in the backend.
+    - `placeholder="What's your name ?"`: Displays a hint inside the input field until the user starts typing.
+    -->
+
+    <!-- Submit button to send the form data -->
+    <input type="submit"/>
+    <!--
+    Attributes explained:
+    - `type="submit"`: Specifies the button submits the form data.
+    -->
+</form>
+
+</BODY>
+</HTML>
