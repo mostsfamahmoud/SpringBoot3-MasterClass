@@ -97,7 +97,7 @@ As a student, this course helps me:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/spring-boot3-course.git
+   git clone https://github.com/mostsfamahmoud/SpringBoot3-MasterClass.git
    ```
 
 2. Import the project into your IDE.
@@ -137,6 +137,6 @@ A big thanks to the course instructor for their detailed explanations and hands-
 ## Contact
 If you have any questions or suggestions, feel free to reach out:
 - Email: [mostafamahmoud.cse@gmail.com](mailto:mostafamahmoud.cse@gmail.com)
-- LinkedIn: [Mostafa Mahmoud Ali](https://linkedin.com/in/mostafamahmoudali)
+- LinkedIn: [Mostafa Mahmoud](https://www.linkedin.com/in/mostafa-mahmoud23/)
 
 Happy coding! 🚀
