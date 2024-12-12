@@ -1,0 +1,5 @@
+-- TO Make the AUTO_INCREMENT START WITH 3000
+ALTER TABLE student_tracker.student AUTO_INCREMENT=3000;
+
+-- TO RESET THE AUTO_INCREMENT TO 1
+TRUNCATE student_tracker.student;
