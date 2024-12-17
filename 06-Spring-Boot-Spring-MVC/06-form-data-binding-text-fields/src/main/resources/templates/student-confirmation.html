@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Specify the character encoding for the HTML document -->
+    <meta charset="UTF-8">
+    <!-- Set the title of the web page -->
+    <title>Student Confirmation</title>
+</head>
+<body>
+<h3> Student Confirmation </h3>
+
+<!-- Display confirmation message -->
+The Student is Confirmed:
+
+<!-- Use th:text to display the concatenated first and last name of the student -->
+<!-- th:text="${student.firstName} + ' ' + ${student.lastName}" binds the student object's firstName and lastName -->
+<!-- This is the correct approach for concatenating strings in Thymeleaf -->
+<span th:text="${student.firstName} + ' ' + ${student.lastName}" />
+
+<!-- Alternative example for th:text (not used due to null issues in this case): -->
+<!-- th:text="*{firstName} + ' ' + *{lastName}" references the bound object's properties directly -->
+<!-- However, using *{} may cause null values if the object isn't properly initialized -->
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Specify the character encoding for the HTML document -->
+    <meta charset="UTF-8">
+    <!-- Set the title of the web page -->
+    <title>Student Registration Form</title>
+</head>
+<body>
+
+<h3> Student Registration Form </h3>
+
+<!-- Form for submitting student registration details -->
+<!-- th:action specifies the form's submission URL, handled by the controller -->
+<!-- th:object binds the form fields to the "student" model object -->
+<form th:action="@{/processStudentForm}" th:object="${student}" method="post">
+
+    <!-- Input field for the student's first name -->
+    <!-- th:field maps the input value to the "firstName" property of the "student" object -->
+    First Name: <input type="text" th:field="*{firstName}">
+    <!-- *{firstName} is shorthand for ${student.firstName}, referencing the bound object's property -->
+
+    <br><br>
+
+    <!-- Input field for the student's last name -->
+    <!-- th:field maps the input value to the "lastName" property of the "student" object -->
+    Last Name: <input type="text" th:field="*{lastName}">
+
+    <br><br>
+
+    <!-- Submit button for the form -->
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

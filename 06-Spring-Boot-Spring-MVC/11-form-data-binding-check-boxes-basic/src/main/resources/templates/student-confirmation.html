@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Specify the character encoding for the HTML document -->
+    <meta charset="UTF-8">
+    <!-- Set the title of the web page -->
+    <title>Student Confirmation</title>
+</head>
+<body>
+
+<!-- Page header for the student confirmation -->
+<h3>Student Confirmation</h3>
+
+<!--
+    Display a confirmation message for the student.
+    Use th:text to dynamically render data passed from the controller.
+-->
+
+<!--
+    Display the concatenated first and last name of the student.
+    - th:text="${student.firstName} + ' ' + ${student.lastName}" dynamically concatenates the "firstName" and "lastName" properties of the "student" object.
+    - ${student} is a model attribute passed to this Thymeleaf template.
+-->
+The Student is Confirmed:
+<span th:text="${student.firstName} + ' ' + ${student.lastName}"></span>
+
+<!--
+    Alternative method (commented out):
+    - Using *{} directly references the fields of the object bound to th:object.
+    - However, it may cause issues with null values if the student object is not fully initialized.
+
+    Example:
+    <span th:text="*{firstName} + ' ' + *{lastName}"></span>
+-->
+
+<br><br>
+
+<!--
+    Display the selected country.
+    th:text="${student.country}" binds the country property of the student object to this span.
+-->
+Country: <span th:text="${student.country}"></span>
+
+<br><br>
+
+<!--
+    Display the selected favorite programming language.
+    th:text="${student.favoriteLanguage}" binds the "favoriteLanguage" property to this span.
+-->
+Favorite Programming Language: <span th:text="${student.favoriteLanguage}"></span>
+
+<br><br>
+
+<!--
+    Display the list of favorite operating systems.
+    - th:each iterates over the list "favoriteOperatingSystems" from the "student" object.
+    - th:text dynamically displays each operating system in the list.
+-->
+Favorite Operating Systems:
+<ul>
+    <!-- Iterate over each operating system in the favoriteOperatingSystems list -->
+    <li th:each="tempSystem : ${student.favoriteOperatingSystems}"
+        th:text="${tempSystem}"></li>
+    <!--
+        - th:each="tempSystem : ${student.favoriteOperatingSystems}": Loops through the list.
+        - th:text="${tempSystem}": Displays the value of each item in the list.
+    -->
+</ul>
+
+</body>
+</html>

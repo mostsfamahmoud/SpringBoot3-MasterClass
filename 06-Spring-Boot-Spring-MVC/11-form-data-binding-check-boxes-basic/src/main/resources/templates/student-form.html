@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Specify the character encoding for the HTML document -->
+    <meta charset="UTF-8">
+    <!-- Set the title of the web page -->
+    <title>Student Registration Form</title>
+</head>
+<body>
+
+<!-- Header for the student registration form -->
+<h3>Student Registration Form</h3>
+
+<!--
+    The form submits data to the "/processStudentForm" URL.
+    th:object="${student}" binds the form fields to the "student" model object
+    passed by the controller.
+-->
+<form th:action="@{/processStudentForm}" th:object="${student}" method="post">
+
+    <!--
+        Input field for the student's first name.
+        th:field maps the input value to the "firstName" property
+        of the "student" object.
+    -->
+    <label>
+        First Name:
+        <input type="text" th:field="*{firstName}"/>
+        <!-- *{firstName} is shorthand for ${student.firstName} -->
+    </label>
+
+    <br><br>
+
+    <!--
+        Input field for the student's last name.
+        Similar to the first name, it binds to "lastName" in the "student" object.
+    -->
+    <label>
+        Last Name:
+        <input type="text" th:field="*{lastName}"/>
+        <!-- *{lastName} refers to the student object's "lastName" property -->
+    </label>
+
+    <br><br>
+
+    <!--
+        Dropdown menu for selecting the student's country.
+        th:field binds the selected value to the "country" property of the "student" object.
+        th:each dynamically iterates over the "countries" list, which is passed
+        from the controller.
+        - th:value: Specifies the option's value
+        - th:text: Displays the value in the dropdown
+    -->
+    <label>
+        Country:
+        <select th:field="*{country}">
+            <!-- Loop through each country in the "countries" list -->
+            <option th:each="tempCountry : ${countries}"
+                    th:value="${tempCountry}"
+                    th:text="${tempCountry}">
+            </option>
+        </select>
+    </label>
+
+    <br><br>
+
+    <!--
+        Radio buttons for selecting the student's favorite programming language.
+        th:each iterates over the "languages" list from the controller.
+        Each radio button maps to "favoriteLanguage" in the student object.
+    -->
+    <fieldset>
+        <legend>Favorite Programming Language:</legend>
+        <!-- Dynamically generate radio buttons for each language -->
+        <label th:each="tempLanguage : ${languages}">
+            <input type="radio" th:field="*{favoriteLanguage}"
+                   th:value="${tempLanguage}"/>
+            <span th:text="${tempLanguage}"></span>
+            <!-- th:value sets the value sent during submission -->
+            <!-- th:text displays the language name next to the radio button -->
+        </label>
+    </fieldset>
+
+    <br><br>
+
+    <!--
+        Checkboxes for selecting the student's favorite operating systems.
+        Each checkbox maps to a list property "favoriteOperatingSystems"
+        in the student object, allowing multiple selections.
+        - th:field binds the checkbox value to "favoriteOperatingSystems"
+        - th:value specifies the value for each checkbox
+    -->
+    <fieldset>
+        <legend>Favorite Operating Systems:</legend>
+
+        <!-- Checkbox for Microsoft Windows -->
+        <label>
+            <input type="checkbox" th:field="*{favoriteOperatingSystems}"
+                   th:value="'Microsoft Windows'"/> Microsoft Windows
+        </label>
+
+        <br>
+
+        <!-- Checkbox for MacOS -->
+        <label>
+            <input type="checkbox" th:field="*{favoriteOperatingSystems}"
+                   th:value="'MacOS'"/> MacOS
+        </label>
+
+        <br>
+
+        <!-- Checkbox for Linux -->
+        <label>
+            <input type="checkbox" th:field="*{favoriteOperatingSystems}"
+                   th:value="'Linux'"/> Linux
+        </label>
+    </fieldset>
+
+    <br><br>
+
+    <!--
+        Submit button to send the form data to the server.
+        The data will be bound to the "student" object in the controller
+        using @ModelAttribute.
+    -->
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>

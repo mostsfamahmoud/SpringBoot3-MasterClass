@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Specify the character encoding for the HTML document -->
+    <meta charset="UTF-8">
+    <!-- Set the title of the web page -->
+    <title>Student Registration Form</title>
+</head>
+<body>
+
+<!-- Header for the student registration form -->
+<h3>Student Registration Form</h3>
+
+<!--
+    The form action sends a POST request to "/processStudentForm".
+    The th:object="${student}" binds form input fields to the "student" model object
+    that is passed from the controller.
+-->
+<form th:action="@{/processStudentForm}" th:object="${student}" method="post">
+
+    <!-- Input field for the student's first name -->
+    <label>
+        First Name:
+        <input type="text" th:field="*{firstName}"/>
+        <!--
+            th:field binds this input to "firstName" in the student object.
+            *{firstName} is a shorthand for ${student.firstName}.
+        -->
+    </label>
+    <br><br>
+
+    <!-- Input field for the student's last name -->
+    <label>
+        Last Name:
+        <input type="text" th:field="*{lastName}"/>
+        <!-- th:field binds this input to "lastName" in the student object -->
+    </label>
+    <br><br>
+
+    <!-- Dropdown menu for selecting the student's country -->
+    <label>
+        Country:
+        <select th:field="*{country}">
+            <!--
+                th:field binds the selected option to the "country" property in the student object.
+                th:each dynamically iterates over the "countries" list passed from the controller.
+                th:value sets the actual value of the option, while th:text displays the text.
+            -->
+            <option th:each="tempCountry : ${countries}"
+                    th:value="${tempCountry}"
+                    th:text="${tempCountry}">
+            </option>
+        </select>
+    </label>
+    <br><br>
+
+    <!-- Radio buttons for selecting the student's favorite programming language -->
+    <fieldset>
+        <legend>Favorite Programming Language:</legend>
+        <!--
+            th:each iterates over the "languages" list passed from the controller.
+            Each radio button's value is bound to "favoriteLanguage" in the student object.
+        -->
+        <label th:each="tempLanguage : ${languages}">
+            <input type="radio" th:field="*{favoriteLanguage}"
+                   th:value="${tempLanguage}"/>
+            <span th:text="${tempLanguage}"></span>
+            <!--
+                th:value sets the value for each radio button.
+                th:text displays the language name next to the button.
+            -->
+        </label>
+    </fieldset>
+    <br><br>
+
+    <!-- Checkboxes for selecting the student's favorite operating systems -->
+    <fieldset>
+        <legend>Favorite Operating Systems:</legend>
+        <!--
+            th:each iterates over the "operatingSystems" list from the controller.
+            Each checkbox is bound to "favoriteOperatingSystems" in the student object.
+        -->
+        <label th:each="tempSystem : ${operatingSystems}">
+            <input type="checkbox" th:field="*{favoriteOperatingSystems}"
+                   th:value="${tempSystem}"/>
+            <span th:text="${tempSystem}"></span>
+            <!--
+                th:field binds this checkbox to the "favoriteOperatingSystems" list.
+                th:value specifies the operating system value.
+                th:text displays the operating system name.
+            -->
+            <br>
+        </label>
+    </fieldset>
+    <br><br>
+
+    <!-- Submit button to send the form data to the server -->
+    <input type="submit" value="Submit"/>
+</form>
+
+</body>
+</html>
