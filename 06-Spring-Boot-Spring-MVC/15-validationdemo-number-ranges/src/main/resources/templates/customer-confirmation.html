@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Specify the character encoding for the HTML document -->
+    <meta charset="UTF-8">
+    <!-- Set the title of the web page -->
+    <title>Customer Confirmation</title>
+</head>
+<body>
+<h3>Customer Confirmation</h3>
+
+<!-- Display the customer's full name -->
+<!--
+    th:text="${customer.firstName + ' ' + customer.lastName}" concatenates the customer's first and last name.
+    This ensures that both values are displayed together, separated by a space.
+-->
+<p>
+    Name: <span th:text="${customer.firstName + ' ' + customer.lastName}"></span>
+</p>
+
+<!-- Display the number of free passes -->
+<!--
+    th:text="${customer.freePasses}" dynamically renders the freePasses value from the customer object.
+-->
+<p>
+    Free Passes: <span th:text="${customer.freePasses}"></span>
+</p>
+
+</body>
+</html>

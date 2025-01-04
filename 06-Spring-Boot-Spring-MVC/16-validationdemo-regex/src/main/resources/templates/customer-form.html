@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Specify the character encoding for the HTML document -->
+    <meta charset="UTF-8">
+    <!-- Set the title of the web page -->
+    <title>Customer Registration Form</title>
+
+    <!-- Inline style for error messages -->
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header for the customer registration form -->
+<h3>Customer Registration Form</h3>
+
+<!-- Informational note about required fields -->
+<i>Note: Asterisk (*) means required</i>
+
+<br><br>
+
+<!--
+    Form for customer registration.
+    - th:action: Specifies the form submission URL, mapped to the "/processCustomerForm" handler in the controller.
+    - th:object: Binds the form fields to the "customer" model object.
+-->
+<form th:action="@{/processCustomerForm}" th:object="${customer}" method="post">
+
+    <!--
+        Input field for the customer's first name.
+        - th:field: Maps the input value to the "firstName" property of the "customer" object.
+        - *{firstName} is shorthand for ${customer.firstName}.
+    -->
+    First Name:
+    <input type="text" th:field="*{firstName}"/>
+
+    <br><br>
+
+    <!--
+        Input field for the customer's last name.
+        - th:field: Maps the input value to the "lastName" property of the "customer" object.
+    -->
+    Last Name (*):
+    <input type="text" th:field="*{lastName}"/>
+
+    <!--
+        Error message for lastName validation errors.
+        - th:if: Checks if there are validation errors for "lastName".
+        - th:errors: Displays the validation error messages for "lastName".
+        - class="error": Applies the red color to the error message using CSS.
+    -->
+    <span th:if="${#fields.hasErrors('lastName')}"
+          th:errors="*{lastName}"
+          class="error"></span>
+
+    <br><br>
+
+    <!--
+        Input field for the customer's free passes.
+        - th:field: Maps the input value to the "freePasses" property of the "customer" object.
+    -->
+    Free Passes:
+    <input type="text" th:field="*{freePasses}"/>
+
+    <!--
+        Error message for freePasses validation errors.
+        - th:if: Checks if there are validation errors for "freePasses".
+        - th:errors: Displays the validation error messages for "freePasses".
+        - class="error": Applies the red color to the error message using CSS.
+    -->
+    <span th:if="${#fields.hasErrors('freePasses')}"
+          th:errors="*{freePasses}"
+          class="error"></span>
+
+    <br><br>
+
+
+    <!--
+    Input field for the customer's postal code.
+    - th:field: Maps the input value to the "postalCode" property of the "customer" object.
+    -->
+    Postal Code:
+    <input type="text" th:field="*{postalCode}"/>
+
+    <!--
+        Error message for postalCode validation errors.
+        - th:if: Checks if there are validation errors for "postalCode".
+        - th:errors: Displays the validation error messages for "postalCode".
+        - class="error": Applies the red color to the error message using CSS.
+    -->
+    <span th:if="${#fields.hasErrors('postalCode')}"
+          th:errors="*{postalCode}"
+          class="error"></span>
+
+    <br><br>
+
+    <!-- Submit button to submit the form -->
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
